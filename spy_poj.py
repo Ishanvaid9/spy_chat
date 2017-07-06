@@ -1,9 +1,11 @@
+#spychat 
 from spy_det import spy, Spy, ChatMessage, friends
 from steganography.steganography import Steganography
 from datetime import datetime
 from termcolor import colored
 
 
+#basic input
 
 print colored("WELCOME CANDIDATE",'blue',attrs=['underline'])
 spy_name=raw_input("enter your name ")
@@ -43,7 +45,9 @@ if spy_age.isdigit():
 else:
     print'wrong choice'
     exit()
+   
 # spy rating
+
 spy_rating=(raw_input("enter the rating of "+colored(spy_name.upper(),"blue") + " from 1 to 5 "))
 if len(spy_rating)<1:
     print "enter rating from 1-5"
@@ -71,6 +75,8 @@ question = "Do you want to continue as " + spy.salutation + " " + spy.name + " (
 existing = raw_input(question)
 
 STATUS_MESSAGES = ['Avaliable', 'False Alarm']
+
+#function to add status of spy
 
 def add_status():
 
@@ -115,7 +121,8 @@ def add_status():
         print 'NO status update'
 
     return updated_status_message
-
+   
+#function to add friend
 
 def add_friend():
 
@@ -140,6 +147,7 @@ def add_friend():
 
     return len(friends)
 
+#function to select friend
 
 def select_a_friend():
     item_number = 0
@@ -156,6 +164,7 @@ def select_a_friend():
 
     return friend_choice_position
 
+#function to encode the message in the image
 
 def send_message():
 
@@ -171,7 +180,8 @@ def send_message():
     friends[friend_choice].chats.append(new_chat)
 
     print "Your secret message image is ready!"
-
+    
+#function to decode the message in the image
 
 def read_message():
 
@@ -186,7 +196,7 @@ def read_message():
     friends[sender].chats.append(new_chat)
 
     print "Your secret message has been saved!"
-
+# function to read the chat between the spy's
 
 def read_chat_history():
 
@@ -200,7 +210,7 @@ def read_chat_history():
         else:
             print '[%s] %s said: %s' % (colored(chat.time.strftime("%d %B %Y"),'blue'), colored(friends[read_for].name,'red'), chat.message)
 
-
+#function for showing the menu item to the client
 def start_chat(spy):
 
     spy.name = spy.salutation + " " + spy.name
